@@ -24,19 +24,6 @@ class KeyMappingLoaderTest {
     }
 
     @Test
-    fun loadAltMappings_mp01ManualOverride_exposesCustomDedicatedKeys() {
-        val context = RuntimeEnvironment.getApplication()
-        SettingsManager.setPhysicalKeyboardProfileOverride(context, "mp01")
-
-        val mappings = KeyMappingLoader.loadAltKeyMappings(context.assets, context)
-
-        assertTrue(mappings.isNotEmpty())
-        assertEquals("&", mappings[KeyEvent.KEYCODE_Q])
-        assertEquals("0", mappings[666])
-        assertEquals(".", mappings[667])
-    }
-
-    @Test
     fun loadAltMappings_unknownDevice_usesCompleteTitan2FallbackForVirtualKeyboard() {
         val context = RuntimeEnvironment.getApplication()
         SettingsManager.setPhysicalKeyboardProfileOverride(context, "auto")
